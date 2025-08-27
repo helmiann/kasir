@@ -11,7 +11,7 @@ cart = []
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", "dev_secret")
 
 # Konfigurasi database
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydb.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  
 db.init_app(app)
 
@@ -357,4 +357,5 @@ def export_stok():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
     app.run(debug=True)
+
 
