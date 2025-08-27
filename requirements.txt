@@ -8,3 +8,5 @@ Flask-Login
 gunicorn
 sqlalchemy
 psycopg2-binary 
+sqlite3
+
