@@ -5,3 +5,6 @@ openpyxl
 Werkzeug
 Flask-Session
 Flask-Login
+gunicorn
+sqlalchemy
+psycopg2-binary 
