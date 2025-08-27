@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tambah Stok</title>
+</head>
+<body>
+    <h1>Tambah Barang Baru</h1>
+    <form method="post">
+  <label>Kode</label>
+  <input type="text" name="kode" required>
+
+  <label>Jenis</label>
+  <input type="text" name="jenis" required>
+
+  <label>Nama</label>
+  <input type="text" name="nama" required>
+
+  <label>Harga</label>
+  <input type="number" name="harga" required>
+
+  <label>Jumlah</label>
+  <input type="number" name="jumlah" required>
+
+  {% if not has_minggu %}
+    <label>Minggu (pilih tanggal minggu awal)</label>
+    <input type="date" name="minggu" required>
+  {% else %}
+    <!-- sudah ada minggu → tidak perlu isi, biarkan otomatis -->
+    <input type="hidden" name="minggu">
+  {% endif %}
+
+  <button type="submit">Simpan</button>
+</form>
+
+    <br>
+    <a href="{{ url_for('stocks_page') }}">Kembali ke Stok</a>
+</body>
+</html>

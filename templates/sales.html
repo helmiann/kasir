@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Riwayat Penjualan</title>
+</head>
+<body>
+    <h1>Riwayat Penjualan</h1>
+
+    <!-- Form filter & export -->
+    <form action="/export_sales" method="get" style="margin-bottom: 20px;">
+        <label for="start">Dari Tanggal:</label>
+        <input type="date" id="start" name="start" required>
+
+        <label for="end">Sampai Tanggal:</label>
+        <input type="date" id="end" name="end" required>
+
+        <button type="submit">Export ke Excel</button>
+    </form>
+
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Tanggal</th>
+            <th>Nama Barang</th>
+            <th>Jumlah</th>
+            <th>Harga Satuan</th>
+            <th>Subtotal</th>
+        </tr>
+        {% for item in sales %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.tanggal.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+            <td>{{ item.nama }}</td>
+            <td>{{ item.jumlah }}</td>
+            <td>{{ item.harga }}</td>
+            <td>{{ item.jumlah * item.harga }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Total: {{ total }}</h3>
+
+    <br>
+    <a href="/">⬅ Kembali</a>
+</body>
+</html>

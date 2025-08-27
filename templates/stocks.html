@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stok Barang</title>
+</head>
+<body>
+    <h1>Daftar Stok</h1>
+    <ul>
+        {% for stock in stocks %}
+        <li>
+            {{ stock.kode }} - {{ stock.nama }} 
+            ({{ stock.jumlah }} pcs) @ {{ stock.harga }}  
+            | Minggu: {{ stock.minggu }}
+
+            <!-- Form tunggal untuk update stok -->
+    <form action="/update_stock/{{ stock.id }}" method="post" style="display:inline;">
+        <input type="hidden" name="action" value="add">
+        <button type="submit">+</button>
+    </form>
+
+    <form action="/update_stock/{{ stock.id }}" method="post" style="display:inline;">
+        <input type="hidden" name="action" value="sub">
+        <button type="submit">-</button>
+    </form>
+
+    <form action="/update_stock/{{ stock.id }}" method="post" style="display:inline;" onsubmit="return confirm('Yakin ingin hapus?');">
+        <input type="hidden" name="action" value="delete">
+        <button type="submit">Hapus</button>
+    </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <!-- Form tambah minggu -->
+    <h3>Tambah Snapshot Minggu Baru</h3>
+    <form action="/tambah_minggu" method="post">
+        <input type="date" name="minggu" required>
+        <button type="submit">+ Minggu</button>
+    </form>
+
+    <br>
+    <a href="/add_stock">Tambah Stok Baru</a> | 
+    <a href="/">Kembali ke Kasir</a>
+    <a href="/export_stok" target="_blank" style="background-color: #4CAF50; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px;">
+    Export Stok ke Excel
+</a>
+</body>
+</html>
