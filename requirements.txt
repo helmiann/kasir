@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+SQLAlchemy
+openpyxl
+Werkzeug
+Flask-Session
+Flask-Login
